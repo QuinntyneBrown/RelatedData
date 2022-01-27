@@ -7,7 +7,7 @@ namespace RelatedData.Api.Data
     {
         public static void Seed(RelatedDataDbContext context)
         {
-            foreach(var categoryName in new List<string>()
+            foreach (var categoryName in new List<string>()
             {
                 "Household",
                 "Sporting Equipment",

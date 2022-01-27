@@ -10,6 +10,6 @@ namespace RelatedData.Api.Interfaces
         DbSet<Product> Products { get; }
         DbSet<Category> Categories { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
-        
+
     }
 }

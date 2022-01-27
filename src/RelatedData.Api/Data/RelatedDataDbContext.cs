@@ -7,12 +7,12 @@ using System.Linq;
 
 namespace RelatedData.Api.Data
 {
-    public class RelatedDataDbContext: DbContext, IRelatedDataDbContext
+    public class RelatedDataDbContext : DbContext, IRelatedDataDbContext
     {
         public DbSet<Product> Products { get; private set; }
         public DbSet<Category> Categories { get; private set; }
         public RelatedDataDbContext(DbContextOptions options)
-            :base(options) { }
+            : base(options) { }
 
     }
 }

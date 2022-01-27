@@ -10,45 +10,47 @@ namespace RelatedData.Api.Features
 {
     public class UpdateCategory
     {
-        public class Validator: AbstractValidator<Request>
+        public class Validator : AbstractValidator<Request>
         {
             public Validator()
             {
                 RuleFor(request => request.Category).NotNull();
                 RuleFor(request => request.Category).SetValidator(new CategoryValidator());
             }
-        
+
         }
 
-        public class Request: IRequest<Response>
+        public class Request : IRequest<Response>
         {
             public CategoryDto Category { get; set; }
         }
 
-        public class Response: ResponseBase
+        public class Response : ResponseBase
         {
             public CategoryDto Category { get; set; }
         }
 
-        public class Handler: IRequestHandler<Request, Response>
+        public class Handler : IRequestHandler<Request, Response>
         {
             private readonly IRelatedDataDbContext _context;
-        
+
             public Handler(IRelatedDataDbContext context)
                 => _context = context;
-        
+
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
                 var category = await _context.Categories.SingleAsync(x => x.CategoryId == request.Category.CategoryId);
-                
+
+                category.Name = request.Category.Name;
+
                 await _context.SaveChangesAsync(cancellationToken);
-                
-                return new Response()
+
+                return new()
                 {
                     Category = category.ToDto()
                 };
             }
-            
+
         }
     }
 }

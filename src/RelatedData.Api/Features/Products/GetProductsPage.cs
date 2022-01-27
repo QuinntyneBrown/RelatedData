@@ -14,42 +14,42 @@ namespace RelatedData.Api.Features
 {
     public class GetProductsPage
     {
-        public class Request: IRequest<Response>
+        public class Request : IRequest<Response>
         {
             public int PageSize { get; set; }
             public int Index { get; set; }
         }
 
-        public class Response: ResponseBase
+        public class Response : ResponseBase
         {
             public int Length { get; set; }
             public List<ProductDto> Entities { get; set; }
         }
 
-        public class Handler: IRequestHandler<Request, Response>
+        public class Handler : IRequestHandler<Request, Response>
         {
             private readonly IRelatedDataDbContext _context;
-        
+
             public Handler(IRelatedDataDbContext context)
                 => _context = context;
-        
+
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
                 var query = from product in _context.Products
-                    select product;
-                
+                            select product;
+
                 var length = await _context.Products.CountAsync();
-                
+
                 var products = await query.Page(request.Index, request.PageSize)
                     .Select(x => x.ToDto()).ToListAsync();
-                
+
                 return new()
                 {
                     Length = length,
                     Entities = products
                 };
             }
-            
+
         }
     }
 }

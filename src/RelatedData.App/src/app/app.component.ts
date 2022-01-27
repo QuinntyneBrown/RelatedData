@@ -12,7 +12,6 @@ export class AppComponent {
   readonly vm$ = this._productService.get()
   .pipe(
     switchMap(products => {
-
       const observables = products.map(product => this._categoryService.getById({ categoryId: product.categoryId }).pipe(
         map(category => {
           return {
@@ -21,7 +20,6 @@ export class AppComponent {
           }
         })
       ));
-
       return combineLatest(observables);
     }),
 
@@ -31,8 +29,5 @@ export class AppComponent {
   constructor(
     private readonly _productService: ProductService,
     private readonly _categoryService: CategoryService
-
-  ) {
-
-  }
+  ) { }
 }

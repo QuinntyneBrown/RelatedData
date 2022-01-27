@@ -7,13 +7,13 @@ namespace RelatedData.Api.Features
     {
         public static CategoryDto ToDto(this Category category)
         {
-            return new ()
+            return new()
             {
                 CategoryId = category.CategoryId,
                 Name = category.Name
-                
+
             };
         }
-        
+
     }
 }

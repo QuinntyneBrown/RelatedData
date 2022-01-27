@@ -12,27 +12,28 @@ namespace RelatedData.Api.Features
 {
     public class GetCategories
     {
-        public class Request: IRequest<Response> { }
+        public class Request : IRequest<Response> { }
 
-        public class Response: ResponseBase
+        public class Response : ResponseBase
         {
             public List<CategoryDto> Categories { get; set; }
         }
 
-        public class Handler: IRequestHandler<Request, Response>
+        public class Handler : IRequestHandler<Request, Response>
         {
             private readonly IRelatedDataDbContext _context;
-        
+
             public Handler(IRelatedDataDbContext context)
                 => _context = context;
-        
+
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-                return new () {
+                return new()
+                {
                     Categories = await _context.Categories.Select(x => x.ToDto()).ToListAsync()
                 };
             }
-            
+
         }
     }
 }
