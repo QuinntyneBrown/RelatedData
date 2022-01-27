@@ -1,0 +1,31 @@
+{
+  "projects": null,
+  "path": "C:\\projects\\RelatedData",
+  "solutionName": null,
+  "rootNamespace": null,
+  "domainNamespace": "RelatedData.Api",
+  "applicationNamespace": "RelatedData.Api",
+  "infrastructureNamespace": "RelatedData.Api",
+  "apiNamespace": "RelatedData.Api",
+  "domainDirectory": "C:\\projects\\RelatedData\\src\\RelatedData.Api",
+  "applicationDirectory": "C:\\projects\\RelatedData\\src\\RelatedData.Api",
+  "infrastructureDirectory": "C:\\projects\\RelatedData\\src\\RelatedData.Api",
+  "apiDirectory": "C:\\projects\\RelatedData\\src\\RelatedData.Api",
+  "appDirectories": null,
+  "buildingBlocksCoreNamespace": "BuildingBlocks.Core",
+  "buildingBlocksEventStoreNamespace": "BuildingBlocks.EventStore",
+  "store": null,
+  "namespace": null,
+  "domain": null,
+  "core": null,
+  "api": null,
+  "entityIdDataType": null,
+  "sourceFolder": "src",
+  "testFolder": null,
+  "dbContext": "RelatedDataDbContext",
+  "eventSourcing": false,
+  "resources": [
+    "Product",
+    "Category"
+  ]
+}

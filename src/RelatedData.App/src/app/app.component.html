@@ -1,0 +1,10 @@
+<ng-container *ngIf="vm$ | async as vm">
+
+  <ul>
+    <li *ngFor="let productWithCategoryName of vm.productsWithCategoryName">
+      <span>{{ productWithCategoryName.name }}</span>
+      <span>{{ productWithCategoryName.categoryName }}</span>
+    </li>
+  </ul>
+
+</ng-container>
